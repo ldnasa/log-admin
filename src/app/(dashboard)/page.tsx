@@ -20,6 +20,7 @@ import {
 import { Log, LogLevel } from '@/types/log.types';
 import { LogService } from '@/services/log.service';
 import { ProjectService } from '@/services/project.service';
+import Link from 'next/link';
 
 interface ProjectError {
   id: number;
@@ -190,10 +191,10 @@ export default function Home() {
                 <CardHeader className="flex flex-row items-center justify-between">
                   <CardTitle>Resolvidos Recentemente</CardTitle>
                   <Button variant="ghost" size="sm" asChild>
-                    <a href="/logs">
+                    <Link href="/logs/">
                       Ver todos
                       <ArrowRight className="h-4 w-4 ml-2" />
-                    </a>
+                    </Link>
                   </Button>
                 </CardHeader>
                 <CardContent className="space-y-3">

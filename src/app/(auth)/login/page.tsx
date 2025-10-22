@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, FormEvent, useEffect } from 'react';
+import { useState, FormEvent, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -11,7 +11,8 @@ import { Eye, EyeOff, LogIn, Loader2, AlertCircle } from 'lucide-react';
 import { AuthService } from '@/services/auth.service';
 import { useToast } from '@/hooks/useToast';
 
-export default function LoginPage() {
+// ✅ Componente com a lógica que usa useSearchParams
+function LoginContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const toast = useToast();
@@ -30,7 +31,7 @@ export default function LoginPage() {
       const redirect = searchParams.get('redirect') || '/';
       router.push(redirect);
     }
-  }, []);
+  }, [router, searchParams]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -177,5 +178,21 @@ export default function LoginPage() {
         </CardContent>
       </Card>
     </div>
+  );
+}
+
+// ✅ Componente principal que envolve tudo com Suspense
+export default function LoginPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+        <div className="text-center">
+          <Loader2 className="h-8 w-8 animate-spin text-primary mx-auto" />
+          <p className="mt-4 text-muted-foreground">Carregando...</p>
+        </div>
+      </div>
+    }>
+      <LoginContent />
+    </Suspense>
   );
 }
