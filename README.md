@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Project Logs - Sistema de Controle de Logs
 
-## Getting Started
+Sistema web para gerenciamento e controle de logs de projetos.
 
-First, run the development server:
+## Stack Tecnológica
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Frontend:** Next.js 14 + React + TypeScript
+- **Backend:** .NET 8.0 Web API
+- **Database:** SQL Server
+- **Estilização:** Tailwind CSS
+
+## Estrutura do Projeto
+```
+project-logs-web/
+├── src/
+│   ├── app/          # Rotas e páginas (Next.js App Router)
+│   ├── components/   # Componentes React reutilizáveis
+│   ├── services/     # Comunicação com API
+│   ├── types/        # Tipos TypeScript
+│   ├── lib/          # Utilitários e configurações
+│   └── hooks/        # Custom React Hooks
+├── public/           # Arquivos estáticos
+└── README.md         # Este arquivo
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Como Rodar o Projeto
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Instalar dependências:
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Configurar variáveis de ambiente:
+Crie um arquivo `.env.local`:
+```
+NEXT_PUBLIC_API_URL=http://localhost:5000/api
+```
 
-## Learn More
+3. Rodar em desenvolvimento:
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Acessar: http://localhost:3000
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts Disponíveis
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `npm run dev` - Roda em modo desenvolvimento
+- `npm run build` - Cria build de produção
+- `npm run start` - Roda build de produção
+- `npm run lint` - Verifica problemas no código
 
-## Deploy on Vercel
+## Funcionalidades Planejadas
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [ ] Listagem de logs
+- [ ] Filtros por projeto, nível, data
+- [ ] Visualização detalhada de logs
+- [ ] Autenticação de usuários
+- [ ] Dashboard com métricas
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Desenvolvido por
+
+Luiz Matheus da Silva - 2025

@@ -1,26 +1,556 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-jakarta);
   --font-mono: var(--font-geist-mono);
+  
+  /* Sidebar Colors */
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  
+  /* Chart Colors */
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  
+  /* Base Colors */
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  
+  /* Semantic State Colors */
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-error: var(--error);
+  --color-error-foreground: var(--error-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  
+  /* Radius System */
+  --radius-xs: calc(var(--radius) - 6px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --radius: 0.75rem;
+  
+  /* ========================================
+     🌅 LIGHT MODE - Paleta Moderna e Suave
+     ======================================== */
+  
+  /* Base Surface Colors - Neutro claro e confortável */
+  --background: oklch(0.995 0.001 60);         /* Branco quase puro, levemente quente */
+  --foreground: oklch(0.15 0.02 270);          /* Cinza escuro azulado */
+  
+  /* Card & Elevated Surfaces */
+  --card: oklch(1 0 0);                        /* Branco puro */
+  --card-foreground: oklch(0.15 0.02 270);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0.02 270);
+  
+  /* 🟠 PRIMARY - Orange vibrante mas elegante */
+  --primary: oklch(0.62 0.21 35);              /* Orange coral vibrante */
+  --primary-foreground: oklch(0.99 0.002 35);  /* Branco no orange */
+  --primary-hover: oklch(0.57 0.22 35);        /* Orange mais escuro */
+  --primary-active: oklch(0.52 0.23 35);       /* Orange intenso */
+  
+  /* Secondary - Cinza moderno */
+  --secondary: oklch(0.96 0.005 270);          /* Cinza bem claro */
+  --secondary-foreground: oklch(0.15 0.02 270);
+  --secondary-hover: oklch(0.93 0.008 270);
+  
+  /* Muted - Backgrounds sutis e confortáveis */
+  --muted: oklch(0.97 0.003 270);              /* Cinza claríssimo */
+  --muted-foreground: oklch(0.48 0.015 270);   /* Texto secundário legível */
+  
+  /* Accent - Azul suave complementar */
+  --accent: oklch(0.96 0.008 240);             /* Azul bem claro */
+  --accent-foreground: oklch(0.20 0.04 240);
+  
+  /* 🔴 ERROR/DESTRUCTIVE - Vermelho moderno */
+  --destructive: oklch(0.56 0.24 25);          /* Vermelho vibrante */
+  --destructive-foreground: oklch(0.99 0.002 25);
+  --error: oklch(0.56 0.24 25);
+  --error-foreground: oklch(0.99 0.002 25);
+  --error-bg: oklch(0.97 0.035 25);            /* Vermelho claríssimo */
+  --error-border: oklch(0.86 0.10 25);         /* Vermelho claro */
+  
+  /* 🟡 WARNING - Âmbar quente */
+  --warning: oklch(0.70 0.17 60);              /* Âmbar vibrante */
+  --warning-foreground: oklch(0.20 0.05 60);
+  --warning-bg: oklch(0.96 0.035 60);          /* Âmbar claríssimo */
+  --warning-border: oklch(0.82 0.09 60);       /* Âmbar claro */
+  
+  /* 🟢 SUCCESS - Verde esmeralda */
+  --success: oklch(0.56 0.17 155);             /* Verde vibrante */
+  --success-foreground: oklch(0.99 0.002 155);
+  --success-bg: oklch(0.96 0.035 155);         /* Verde claríssimo */
+  --success-border: oklch(0.82 0.09 155);      /* Verde claro */
+  
+  /* 🔵 INFO - Azul céu */
+  --info: oklch(0.56 0.17 230);                /* Azul vibrante */
+  --info-foreground: oklch(0.99 0.002 230);
+  --info-bg: oklch(0.96 0.035 230);            /* Azul claríssimo */
+  --info-border: oklch(0.82 0.09 230);         /* Azul claro */
+  
+  /* Borders & Inputs */
+  --border: oklch(0.92 0.005 270);             /* Borda sutil */
+  --border-hover: oklch(0.82 0.012 270);       /* Borda mais escura no hover */
+  --input: oklch(0.99 0.002 270);              /* Input branco */
+  --input-border: oklch(0.88 0.010 270);       /* Borda de input */
+  
+  /* Focus Ring */
+  --ring: oklch(0.62 0.21 35);                 /* Orange para foco */
+  --ring-offset: oklch(1 0 0);                 /* Offset branco */
+  
+  /* Chart Colors - Paleta vibrante e harmoniosa */
+  --chart-1: oklch(0.62 0.21 35);              /* Orange coral */
+  --chart-2: oklch(0.56 0.17 230);             /* Azul vibrante */
+  --chart-3: oklch(0.56 0.17 155);             /* Verde esmeralda */
+  --chart-4: oklch(0.70 0.17 60);              /* Âmbar */
+  --chart-5: oklch(0.60 0.20 320);             /* Rosa magenta */
+  
+  /* Sidebar */
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.15 0.02 270);
+  --sidebar-primary: oklch(0.62 0.21 35);
+  --sidebar-primary-foreground: oklch(0.99 0.002 35);
+  --sidebar-accent: oklch(0.96 0.005 270);
+  --sidebar-accent-foreground: oklch(0.15 0.02 270);
+  --sidebar-border: oklch(0.92 0.005 270);
+  --sidebar-ring: oklch(0.62 0.21 35);
+  
+  /* Surface Elevation - Sombras suaves */
+  --shadow-xs: 0 1px 2px 0 oklch(0.15 0.02 270 / 0.06);
+  --shadow-sm: 0 1px 3px 0 oklch(0.15 0.02 270 / 0.12), 0 1px 2px -1px oklch(0.15 0.02 270 / 0.08);
+  --shadow-md: 0 4px 6px -1px oklch(0.15 0.02 270 / 0.12), 0 2px 4px -2px oklch(0.15 0.02 270 / 0.08);
+  --shadow-lg: 0 10px 15px -3px oklch(0.15 0.02 270 / 0.12), 0 4px 6px -4px oklch(0.15 0.02 270 / 0.08);
+  --shadow-xl: 0 20px 25px -5px oklch(0.15 0.02 270 / 0.14), 0 8px 10px -6px oklch(0.15 0.02 270 / 0.08);
+
+      /* Toast Colors */
+    --success: 142 76% 36%;
+    --warning: 38 92% 50%;
+    --error: 0 84% 60%;
+    --info: 199 89% 48%;
+}
+
+.dark {
+  /* ========================================
+     🌙 DARK MODE - Preto puro com acentos vibrantes
+     ======================================== */
+  
+  /* Base Surface Colors - Preto puro OLED-friendly */
+  --background: oklch(0.08 0.008 270);         /* Preto profundo azulado */
+  --foreground: oklch(0.98 0.003 270);         /* Branco quente */
+  
+  /* Card & Elevated Surfaces */
+  --card: oklch(0.13 0.012 270);               /* Card elevado escuro */
+  --card-foreground: oklch(0.98 0.003 270);
+  --popover: oklch(0.11 0.010 270);
+  --popover-foreground: oklch(0.98 0.003 270);
+  
+  /* 🟠 PRIMARY - Orange luminoso no dark */
+  --primary: oklch(0.72 0.20 35);              /* Orange brilhante */
+  --primary-foreground: oklch(0.08 0.008 35);  /* Texto escuro */
+  --primary-hover: oklch(0.77 0.21 35);        /* Orange mais claro no hover */
+  --primary-active: oklch(0.82 0.22 35);       /* Orange luminoso */
+  
+  /* Secondary - Cinza escuro moderno */
+  --secondary: oklch(0.20 0.015 270);          /* Cinza médio escuro */
+  --secondary-foreground: oklch(0.98 0.003 270);
+  --secondary-hover: oklch(0.25 0.018 270);
+  
+  /* Muted - Backgrounds sutis escuros */
+  --muted: oklch(0.18 0.013 270);              /* Cinza escuro sutil */
+  --muted-foreground: oklch(0.65 0.012 270);   /* Texto secundário claro */
+  
+  /* Accent - Azul luminoso */
+  --accent: oklch(0.25 0.020 240);             /* Azul escuro sutil */
+  --accent-foreground: oklch(0.98 0.003 240);
+  
+  /* 🔴 ERROR/DESTRUCTIVE - Vermelho luminoso */
+  --destructive: oklch(0.68 0.23 25);          /* Vermelho brilhante */
+  --destructive-foreground: oklch(0.98 0.003 25);
+  --error: oklch(0.68 0.23 25);
+  --error-foreground: oklch(0.98 0.003 25);
+  --error-bg: oklch(0.18 0.045 25);            /* Vermelho escuro */
+  --error-border: oklch(0.35 0.12 25);         /* Vermelho médio */
+  
+  /* 🟡 WARNING - Âmbar luminoso */
+  --warning: oklch(0.78 0.16 60);              /* Âmbar brilhante */
+  --warning-foreground: oklch(0.10 0.010 60);
+  --warning-bg: oklch(0.18 0.040 60);          /* Âmbar escuro */
+  --warning-border: oklch(0.38 0.10 60);       /* Âmbar médio */
+  
+  /* 🟢 SUCCESS - Verde esmeralda luminoso */
+  --success: oklch(0.68 0.16 155);             /* Verde brilhante */
+  --success-foreground: oklch(0.98 0.003 155);
+  --success-bg: oklch(0.16 0.040 155);         /* Verde escuro */
+  --success-border: oklch(0.35 0.11 155);      /* Verde médio */
+  
+  /* 🔵 INFO - Azul céu luminoso */
+  --info: oklch(0.68 0.16 230);                /* Azul brilhante */
+  --info-foreground: oklch(0.98 0.003 230);
+  --info-bg: oklch(0.16 0.040 230);            /* Azul escuro */
+  --info-border: oklch(0.35 0.11 230);         /* Azul médio */
+  
+  /* Borders & Inputs */
+  --border: oklch(0.22 0.015 270);             /* Borda sutil escura */
+  --border-hover: oklch(0.32 0.020 270);       /* Borda clara no hover */
+  --input: oklch(0.14 0.012 270);              /* Input escuro */
+  --input-border: oklch(0.26 0.018 270);       /* Borda de input */
+  
+  /* Focus Ring */
+  --ring: oklch(0.72 0.20 35);                 /* Orange brilhante */
+  --ring-offset: oklch(0.08 0.008 270);        /* Offset preto */
+  
+  /* Chart Colors - Paleta vibrante para dark */
+  --chart-1: oklch(0.72 0.20 35);              /* Orange luminoso */
+  --chart-2: oklch(0.68 0.16 230);             /* Azul luminoso */
+  --chart-3: oklch(0.68 0.16 155);             /* Verde luminoso */
+  --chart-4: oklch(0.78 0.16 60);              /* Âmbar luminoso */
+  --chart-5: oklch(0.70 0.19 320);             /* Rosa luminoso */
+  
+  /* Sidebar */
+  --sidebar: oklch(0.10 0.010 270);
+  --sidebar-foreground: oklch(0.98 0.003 270);
+  --sidebar-primary: oklch(0.72 0.20 35);
+  --sidebar-primary-foreground: oklch(0.98 0.003 35);
+  --sidebar-accent: oklch(0.20 0.015 270);
+  --sidebar-accent-foreground: oklch(0.98 0.003 270);
+  --sidebar-border: oklch(0.22 0.015 270);
+  --sidebar-ring: oklch(0.72 0.20 35);
+  
+  /* Surface Elevation - Sombras para dark mode */
+  --shadow-xs: 0 1px 2px 0 oklch(0 0 0 / 0.4);
+  --shadow-sm: 0 1px 3px 0 oklch(0 0 0 / 0.5), 0 1px 2px -1px oklch(0 0 0 / 0.5);
+  --shadow-md: 0 4px 6px -1px oklch(0 0 0 / 0.5), 0 2px 4px -2px oklch(0 0 0 / 0.5);
+  --shadow-lg: 0 10px 15px -3px oklch(0 0 0 / 0.6), 0 4px 6px -4px oklch(0 0 0 / 0.6);
+  --shadow-xl: 0 20px 25px -5px oklch(0 0 0 / 0.7), 0 8px 10px -6px oklch(0 0 0 / 0.7);
+
+  /* Toast Colors Dark */
+    --success: 142 71% 45%;
+    --warning: 38 92% 50%;
+    --error: 0 84% 60%;
+    --info: 199 89% 48%;
+}
+
+/* ========================================
+   🎨 BASE LAYER - Estilos Globais
+   ======================================== */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* ========================================
+     🖱️ CURSOR SYSTEM
+     ======================================== */
+  
+  button,
+  a,
+  [role="button"],
+  label[for],
+  select,
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  input[type="checkbox"],
+  input[type="radio"] {
+    cursor: pointer;
+  }
+  
+  button:disabled,
+  a:disabled,
+  a[aria-disabled="true"],
+  [aria-disabled="true"],
+  [disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="number"],
+  textarea {
+    cursor: text;
+  }
+  
+  /* ========================================
+     📏 SCROLLBAR STYLING - Moderno e sutil
+     ======================================== */
+  
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(0.62 0.21 35 / 0.4) oklch(0.97 0.003 270);
+  }
+  
+  .dark * {
+    scrollbar-color: oklch(0.72 0.20 35 / 0.6) oklch(0.18 0.013 270);
+  }
+  
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: oklch(0.97 0.003 270);
+    border-radius: 5px;
+  }
+  
+  .dark *::-webkit-scrollbar-track {
+    background: oklch(0.18 0.013 270);
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background: oklch(0.62 0.21 35 / 0.4);
+    border-radius: 5px;
+    border: 2px solid oklch(0.97 0.003 270);
+    transition: all 0.2s ease;
+  }
+  
+  *::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.62 0.21 35 / 0.7);
+  }
+  
+  .dark *::-webkit-scrollbar-thumb {
+    background: oklch(0.72 0.20 35 / 0.6);
+    border-color: oklch(0.18 0.013 270);
+  }
+  
+  .dark *::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.72 0.20 35 / 0.9);
+  }
+  
+  /* ========================================
+     🎯 SELECTION STYLING - Vibrante
+     ======================================== */
+  
+  ::selection {
+    background-color: oklch(0.62 0.21 35 / 0.25);
+    color: oklch(0.15 0.02 270);
+  }
+  
+  .dark ::selection {
+    background-color: oklch(0.72 0.20 35 / 0.35);
+    color: oklch(0.98 0.003 270);
+  }
+  
+  /* ========================================
+     🔤 TYPOGRAPHY REFINEMENTS
+     ======================================== */
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-feature-settings: "ss01" 1, "cv01" 1;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+  
+  code, pre {
+    font-feature-settings: "liga" 0, "calt" 0;
+    font-variant-ligatures: none;
+  }
+  
+  /* ========================================
+     ✨ UTILITY CLASSES - Semantic Colors
+     ======================================== */
+  
+  .bg-success {
+    background-color: var(--success-bg);
+  }
+  
+  .text-success {
+    color: var(--success);
+  }
+  
+  .border-success {
+    border-color: var(--success-border);
+  }
+  
+  .bg-warning {
+    background-color: var(--warning-bg);
+  }
+  
+  .text-warning {
+    color: var(--warning);
+  }
+  
+  .border-warning {
+    border-color: var(--warning-border);
+  }
+  
+  .bg-error {
+    background-color: var(--error-bg);
+  }
+  
+  .text-error {
+    color: var(--error);
+  }
+  
+  .border-error {
+    border-color: var(--error-border);
+  }
+  
+  .bg-info {
+    background-color: var(--info-bg);
+  }
+  
+  .text-info {
+    color: var(--info);
+  }
+  
+  .border-info {
+    border-color: var(--info-border);
+  }
+  
+  /* ========================================
+     🎭 FOCUS VISIBLE - Acessibilidade moderna
+     ======================================== */
+  
+  *:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  
+  button:focus-visible,
+  a:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  
+  /* ========================================
+     🌊 SMOOTH TRANSITIONS - Fluidas
+     ======================================== */
+  
+  * {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* ========================================
+     💫 GLASS MORPHISM - Efeito moderno
+     ======================================== */
+  
+  .glass {
+    background: oklch(1 0 0 / 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  .dark .glass {
+    background: oklch(0.13 0.012 270 / 0.8);
+  }
+  
+  /* ========================================
+     🎨 GRADIENT BACKGROUNDS - Suaves
+     ======================================== */
+  
+  .gradient-orange {
+    background: linear-gradient(135deg, 
+      oklch(0.62 0.21 35) 0%, 
+      oklch(0.70 0.17 60) 100%
+    );
+  }
+  
+  .gradient-purple {
+    background: linear-gradient(135deg, 
+      oklch(0.60 0.20 320) 0%, 
+      oklch(0.56 0.17 230) 100%
+    );
+  }
+  
+  .gradient-emerald {
+    background: linear-gradient(135deg, 
+      oklch(0.56 0.17 155) 0%, 
+      oklch(0.68 0.16 155) 100%
+    );
+  }
+  
+  /* ========================================
+     🌟 SHIMMER EFFECT - Loading elegante
+     ======================================== */
+  
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      oklch(0.97 0.003 270) 25%,
+      oklch(0.99 0.002 270) 50%,
+      oklch(0.97 0.003 270) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+  
+  .dark .shimmer {
+    background: linear-gradient(
+      90deg,
+      oklch(0.18 0.013 270) 25%,
+      oklch(0.22 0.015 270) 50%,
+      oklch(0.18 0.013 270) 75%
+    );
+    background-size: 200% 100%;
+  }
 }
