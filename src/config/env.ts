@@ -1,6 +1,6 @@
 export const env = {
   // API
-  apiUrl: process.env.NEXT_PUBLIC_API_URL || 'https://log.ldnasa.com.br/',
+  apiUrl: process.env.NEXT_PUBLIC_API_URL || 'https://log.ldnasa.com.br/api',
   
   // Environment
   isDevelopment: process.env.NODE_ENV === 'development',
