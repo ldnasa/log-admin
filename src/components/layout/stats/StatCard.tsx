@@ -1,6 +1,5 @@
 'use client';
 
-import { Card, CardContent } from '@/components/ui/card';
 import { LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -9,48 +8,39 @@ interface StatCardProps {
   value: number | string;
   icon: LucideIcon;
   variant?: 'default' | 'error' | 'warning' | 'info' | 'success';
-  trend?: {
-    value: number;
-    isPositive: boolean;
-  };
   className?: string;
 }
 
 const variantStyles = {
   default: {
-    border: 'border-primary/20',
-    gradient: 'from-primary/5 to-primary/0',
-    iconColor: 'text-primary',
-    valueColor: 'text-foreground',
-    iconBg: 'bg-primary/10',
+    iconBg: 'from-blue-500 to-blue-600',
+    iconColor: 'text-white',
+    valueColor: 'text-slate-900 dark:text-white',
+    glow: 'group-hover:shadow-blue-500/20',
   },
   error: {
-    border: 'border-error/20',
-    gradient: 'from-error/5 to-error/0',
-    iconColor: 'text-error',
-    valueColor: 'text-error',
-    iconBg: 'bg-error/10',
+    iconBg: 'from-rose-500 to-rose-600',
+    iconColor: 'text-white',
+    valueColor: 'text-rose-600 dark:text-rose-400',
+    glow: 'group-hover:shadow-rose-500/20',
   },
   warning: {
-    border: 'border-warning/20',
-    gradient: 'from-warning/5 to-warning/0',
-    iconColor: 'text-warning',
-    valueColor: 'text-warning',
-    iconBg: 'bg-warning/10',
+    iconBg: 'from-amber-500 to-amber-600',
+    iconColor: 'text-white',
+    valueColor: 'text-amber-600 dark:text-amber-400',
+    glow: 'group-hover:shadow-amber-500/20',
   },
   info: {
-    border: 'border-info/20',
-    gradient: 'from-info/5 to-info/0',
-    iconColor: 'text-info',
-    valueColor: 'text-info',
-    iconBg: 'bg-info/10',
+    iconBg: 'from-sky-500 to-sky-600',
+    iconColor: 'text-white',
+    valueColor: 'text-sky-600 dark:text-sky-400',
+    glow: 'group-hover:shadow-sky-500/20',
   },
   success: {
-    border: 'border-success/20',
-    gradient: 'from-success/5 to-success/0',
-    iconColor: 'text-success',
-    valueColor: 'text-success',
-    iconBg: 'bg-success/10',
+    iconBg: 'from-emerald-500 to-emerald-600',
+    iconColor: 'text-white',
+    valueColor: 'text-emerald-600 dark:text-emerald-400',
+    glow: 'group-hover:shadow-emerald-500/20',
   },
 };
 
@@ -59,43 +49,69 @@ export function StatCard({
   value,
   icon: Icon,
   variant = 'default',
-  trend,
   className,
 }: StatCardProps) {
   const styles = variantStyles[variant];
 
   return (
-    <Card
+    <div
       className={cn(
-        'relative overflow-hidden border-l-4 transition-all duration-300',
-        'hover:shadow-lg hover:scale-[1.02]',
-        'bg-gradient-to-br',
-        styles.border,
-        styles.gradient,
+        'group relative overflow-hidden',
+        'bg-white dark:bg-slate-900',
+        'rounded-2xl border border-slate-200 dark:border-slate-800',
+        'shadow-sm hover:shadow-xl',
+        'transition-all duration-300 ease-out',
+        'hover:-translate-y-1',
+        styles.glow,
         className
       )}
     >
-      <CardContent className="p-6">
-        {/* Header */}
+      {/* Card Content */}
+      <div className="relative p-6">
+        
+        {/* Header com Label e Ícone */}
         <div className="flex items-start justify-between mb-4">
+          
+          {/* Label */}
           <div className="flex-1">
-            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">
+            <p className="text-sm font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wider">
               {label}
             </p>
-            <div className="flex items-baseline gap-2">
-              <p className={cn('text-3xl font-bold', styles.valueColor)}>
-                {value}
-              </p>
-            </div>
           </div>
 
-          {/* Icon */}
-          <div className={cn('p-2.5 rounded-xl', styles.iconBg)}>
-            <Icon className={cn('h-5 w-5', styles.iconColor)} />
+          {/* Ícone com Gradiente */}
+          <div className={cn(
+            'flex items-center justify-center',
+            'w-12 h-12 rounded-xl',
+            'bg-gradient-to-br',
+            'shadow-lg transition-transform duration-300',
+            'group-hover:scale-110 group-hover:rotate-3',
+            styles.iconBg
+          )}>
+            <Icon className={cn('w-6 h-6', styles.iconColor)} strokeWidth={2.5} />
           </div>
         </div>
-      
-      </CardContent>
-    </Card>
+
+        {/* Value */}
+        <div className="space-y-2">
+          <p className={cn(
+            'text-4xl font-bold tracking-tight',
+            'leading-none',
+            styles.valueColor
+          )}>
+            {value}
+          </p>
+        </div>
+
+      </div>
+
+      {/* Decorative Bottom Border */}
+      <div className={cn(
+        'absolute bottom-0 left-0 right-0 h-1',
+        'bg-gradient-to-r opacity-0 group-hover:opacity-100',
+        'transition-opacity duration-300',
+        styles.iconBg
+      )} />
+    </div>
   );
 }

@@ -2,22 +2,37 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
 
 export function SidebarLogo() {
   return (
-    <Link href="/" className="flex items-center gap-3 px-4 py-6">
-      <div className="relative w-10 h-10 rounded-lg bg-primary flex items-center justify-center overflow-hidden">
+    <Link
+      href="/"
+      className="group relative flex flex-col items-center justify-center gap-3 px-4 py-6 transition-all duration-300"
+    >
+      {/* Texto "Sistema de Logs" */}
+      <span className={cn(
+        'text-xs font-bold uppercase tracking-[0.2em]',
+        'text-slate-600 dark:text-slate-400',
+        'transition-colors duration-300'
+      )}>
+        Sistema de Logs
+      </span>
+
+      {/* Logo Container */}
+      <div className={cn(
+        'flex items-center justify-center overflow-hidden',
+        'transition-all duration-300',
+      )}>
+
         <Image
-          src="https://www.londrinasa.com.br/assets/img/header/logo-desktop.svg"
+          src="/logo-desktop.svg"
           alt="Londrina S.A."
-          width={32}
-          height={32}
-          className="object-contain dark:brightness-0 dark:invert"
+          width={160}
+          height={80}
+          className="relative z-10 object-contain dark:brightness-0 dark:invert w-full h-full"
+          priority
         />
-      </div>
-      <div className="flex flex-col">
-        <span className="font-bold text-base leading-tight">Sistema de Logs</span>
-        <span className="text-xs text-muted-foreground">Londrina S.A.</span>
       </div>
     </Link>
   );

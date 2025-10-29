@@ -54,238 +54,237 @@
   --color-info: var(--info);
   --color-info-foreground: var(--info-foreground);
   
-  /* Radius System */
-  --radius-xs: calc(var(--radius) - 6px);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
+  /* Radius System - Mais suave e orgânico */
+  --radius-xs: calc(var(--radius) - 4px);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 12px);
 }
 
 :root {
-  --radius: 0.75rem;
+  --radius: 0.625rem; /* 10px - Mais suave */
   
   /* ========================================
-     🌅 LIGHT MODE - Paleta Moderna e Suave
+     ☀️ LIGHT MODE - Minimalista Premium
+     Inspirado em: Notion, Linear, Stripe
      ======================================== */
   
-  /* Base Surface Colors - Neutro claro e confortável */
-  --background: oklch(0.995 0.001 60);         /* Branco quase puro, levemente quente */
-  --foreground: oklch(0.15 0.02 270);          /* Cinza escuro azulado */
+  /* 🎨 Base Surface - Branco cremoso profissional */
+  --background: oklch(0.99 0.002 90);          /* Off-white cremoso */
+  --foreground: oklch(0.20 0.015 260);         /* Quase preto com toque azul */
   
-  /* Card & Elevated Surfaces */
-  --card: oklch(1 0 0);                        /* Branco puro */
-  --card-foreground: oklch(0.15 0.02 270);
+  /* 📄 Cards & Elevated Surfaces */
+  --card: oklch(1 0 0);                        /* Branco puro para elevação */
+  --card-foreground: oklch(0.20 0.015 260);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.15 0.02 270);
+  --popover-foreground: oklch(0.20 0.015 260);
   
-  /* 🟠 PRIMARY - Orange vibrante mas elegante */
-  --primary: oklch(0.62 0.21 35);              /* Orange coral vibrante */
-  --primary-foreground: oklch(0.99 0.002 35);  /* Branco no orange */
-  --primary-hover: oklch(0.57 0.22 35);        /* Orange mais escuro */
-  --primary-active: oklch(0.52 0.23 35);       /* Orange intenso */
+  /* 🔵 PRIMARY - Azul safira elegante (substitui orange) */
+  --primary: oklch(0.50 0.14 250);             /* Azul profissional rico */
+  --primary-foreground: oklch(0.99 0.002 250); /* Branco no azul */
+  --primary-hover: oklch(0.45 0.15 250);       /* Azul mais escuro */
+  --primary-active: oklch(0.40 0.16 250);      /* Azul intenso */
   
-  /* Secondary - Cinza moderno */
-  --secondary: oklch(0.96 0.005 270);          /* Cinza bem claro */
-  --secondary-foreground: oklch(0.15 0.02 270);
-  --secondary-hover: oklch(0.93 0.008 270);
+  /* 🌫️ Secondary - Cinza neutro moderno */
+  --secondary: oklch(0.95 0.004 260);          /* Cinza muito claro */
+  --secondary-foreground: oklch(0.25 0.012 260);
+  --secondary-hover: oklch(0.92 0.006 260);
+  --secondary-active: oklch(0.88 0.008 260);
   
-  /* Muted - Backgrounds sutis e confortáveis */
-  --muted: oklch(0.97 0.003 270);              /* Cinza claríssimo */
-  --muted-foreground: oklch(0.48 0.015 270);   /* Texto secundário legível */
+  /* 🌾 Muted - Tons de terra sutis */
+  --muted: oklch(0.96 0.006 90);               /* Bege suave */
+  --muted-foreground: oklch(0.50 0.010 260);   /* Texto secundário equilibrado */
   
-  /* Accent - Azul suave complementar */
-  --accent: oklch(0.96 0.008 240);             /* Azul bem claro */
-  --accent-foreground: oklch(0.20 0.04 240);
+  /* 💎 Accent - Verde esmeralda refinado */
+  --accent: oklch(0.94 0.012 170);             /* Verde claríssimo */
+  --accent-foreground: oklch(0.25 0.060 170);  /* Verde escuro */
   
-  /* 🔴 ERROR/DESTRUCTIVE - Vermelho moderno */
-  --destructive: oklch(0.56 0.24 25);          /* Vermelho vibrante */
+  /* 🔴 ERROR/DESTRUCTIVE - Vermelho moderno mas suave */
+  --destructive: oklch(0.55 0.22 25);          /* Vermelho balanceado */
   --destructive-foreground: oklch(0.99 0.002 25);
-  --error: oklch(0.56 0.24 25);
+  --error: oklch(0.55 0.22 25);
   --error-foreground: oklch(0.99 0.002 25);
-  --error-bg: oklch(0.97 0.035 25);            /* Vermelho claríssimo */
-  --error-border: oklch(0.86 0.10 25);         /* Vermelho claro */
+  --error-bg: oklch(0.97 0.030 25);            /* Fundo vermelho suave */
+  --error-border: oklch(0.88 0.085 25);
   
-  /* 🟡 WARNING - Âmbar quente */
-  --warning: oklch(0.70 0.17 60);              /* Âmbar vibrante */
-  --warning-foreground: oklch(0.20 0.05 60);
-  --warning-bg: oklch(0.96 0.035 60);          /* Âmbar claríssimo */
-  --warning-border: oklch(0.82 0.09 60);       /* Âmbar claro */
+  /* 🟡 WARNING - Âmbar suave */
+  --warning: oklch(0.68 0.15 65);              /* Âmbar equilibrado */
+  --warning-foreground: oklch(0.15 0.040 65);
+  --warning-bg: oklch(0.96 0.030 65);
+  --warning-border: oklch(0.84 0.080 65);
   
-  /* 🟢 SUCCESS - Verde esmeralda */
-  --success: oklch(0.56 0.17 155);             /* Verde vibrante */
-  --success-foreground: oklch(0.99 0.002 155);
-  --success-bg: oklch(0.96 0.035 155);         /* Verde claríssimo */
-  --success-border: oklch(0.82 0.09 155);      /* Verde claro */
+  /* 🟢 SUCCESS - Verde menta fresco */
+  --success: oklch(0.54 0.14 160);             /* Verde sofisticado */
+  --success-foreground: oklch(0.99 0.002 160);
+  --success-bg: oklch(0.96 0.030 160);
+  --success-border: oklch(0.84 0.080 160);
   
-  /* 🔵 INFO - Azul céu */
-  --info: oklch(0.56 0.17 230);                /* Azul vibrante */
-  --info-foreground: oklch(0.99 0.002 230);
-  --info-bg: oklch(0.96 0.035 230);            /* Azul claríssimo */
-  --info-border: oklch(0.82 0.09 230);         /* Azul claro */
+  /* 🔵 INFO - Azul céu confiável */
+  --info: oklch(0.56 0.14 235);                /* Azul informativo */
+  --info-foreground: oklch(0.99 0.002 235);
+  --info-bg: oklch(0.96 0.030 235);
+  --info-border: oklch(0.84 0.080 235);
   
-  /* Borders & Inputs */
-  --border: oklch(0.92 0.005 270);             /* Borda sutil */
-  --border-hover: oklch(0.82 0.012 270);       /* Borda mais escura no hover */
-  --input: oklch(0.99 0.002 270);              /* Input branco */
-  --input-border: oklch(0.88 0.010 270);       /* Borda de input */
+  /* 📐 Borders & Inputs - Minimalistas */
+  --border: oklch(0.90 0.006 260);             /* Borda discreta */
+  --border-hover: oklch(0.75 0.012 260);       /* Borda visível no hover */
+  --input: oklch(0.99 0.002 260);              /* Input branco */
+  --input-border: oklch(0.88 0.008 260);       /* Borda de input sutil */
+  --input-focus: oklch(0.50 0.14 250);         /* Azul no foco */
   
-  /* Focus Ring */
-  --ring: oklch(0.62 0.21 35);                 /* Orange para foco */
-  --ring-offset: oklch(1 0 0);                 /* Offset branco */
+  /* 💍 Focus Ring - Azul vibrante */
+  --ring: oklch(0.50 0.14 250);                /* Azul primary */
+  --ring-offset: oklch(1 0 0);
   
-  /* Chart Colors - Paleta vibrante e harmoniosa */
-  --chart-1: oklch(0.62 0.21 35);              /* Orange coral */
-  --chart-2: oklch(0.56 0.17 230);             /* Azul vibrante */
-  --chart-3: oklch(0.56 0.17 155);             /* Verde esmeralda */
-  --chart-4: oklch(0.70 0.17 60);              /* Âmbar */
-  --chart-5: oklch(0.60 0.20 320);             /* Rosa magenta */
+  /* 📊 Chart Colors - Paleta harmônica profissional */
+  --chart-1: oklch(0.50 0.14 250);             /* Azul safira */
+  --chart-2: oklch(0.54 0.14 160);             /* Verde esmeralda */
+  --chart-3: oklch(0.68 0.15 65);              /* Âmbar */
+  --chart-4: oklch(0.55 0.18 310);             /* Magenta */
+  --chart-5: oklch(0.56 0.14 30);              /* Coral */
   
-  /* Sidebar */
-  --sidebar: oklch(1 0 0);
-  --sidebar-foreground: oklch(0.15 0.02 270);
-  --sidebar-primary: oklch(0.62 0.21 35);
-  --sidebar-primary-foreground: oklch(0.99 0.002 35);
-  --sidebar-accent: oklch(0.96 0.005 270);
-  --sidebar-accent-foreground: oklch(0.15 0.02 270);
-  --sidebar-border: oklch(0.92 0.005 270);
-  --sidebar-ring: oklch(0.62 0.21 35);
+  /* 📱 Sidebar - Integrado ao tema */
+  --sidebar: oklch(0.99 0.002 90);
+  --sidebar-foreground: oklch(0.20 0.015 260);
+  --sidebar-primary: oklch(0.50 0.14 250);
+  --sidebar-primary-foreground: oklch(0.99 0.002 250);
+  --sidebar-accent: oklch(0.95 0.004 260);
+  --sidebar-accent-foreground: oklch(0.25 0.012 260);
+  --sidebar-border: oklch(0.90 0.006 260);
+  --sidebar-ring: oklch(0.50 0.14 250);
   
-  /* Surface Elevation - Sombras suaves */
-  --shadow-xs: 0 1px 2px 0 oklch(0.15 0.02 270 / 0.06);
-  --shadow-sm: 0 1px 3px 0 oklch(0.15 0.02 270 / 0.12), 0 1px 2px -1px oklch(0.15 0.02 270 / 0.08);
-  --shadow-md: 0 4px 6px -1px oklch(0.15 0.02 270 / 0.12), 0 2px 4px -2px oklch(0.15 0.02 270 / 0.08);
-  --shadow-lg: 0 10px 15px -3px oklch(0.15 0.02 270 / 0.12), 0 4px 6px -4px oklch(0.15 0.02 270 / 0.08);
-  --shadow-xl: 0 20px 25px -5px oklch(0.15 0.02 270 / 0.14), 0 8px 10px -6px oklch(0.15 0.02 270 / 0.08);
-
-      /* Toast Colors */
-    --success: 142 76% 36%;
-    --warning: 38 92% 50%;
-    --error: 0 84% 60%;
-    --info: 199 89% 48%;
+  /* 🌤️ Surface Elevation - Sombras naturais */
+  --shadow-xs: 0 1px 2px 0 oklch(0.20 0.015 260 / 0.05);
+  --shadow-sm: 0 1px 3px 0 oklch(0.20 0.015 260 / 0.10), 0 1px 2px -1px oklch(0.20 0.015 260 / 0.10);
+  --shadow-md: 0 4px 6px -1px oklch(0.20 0.015 260 / 0.10), 0 2px 4px -2px oklch(0.20 0.015 260 / 0.10);
+  --shadow-lg: 0 10px 15px -3px oklch(0.20 0.015 260 / 0.10), 0 4px 6px -4px oklch(0.20 0.015 260 / 0.10);
+  --shadow-xl: 0 20px 25px -5px oklch(0.20 0.015 260 / 0.12), 0 8px 10px -6px oklch(0.20 0.015 260 / 0.08);
+  --shadow-2xl: 0 25px 50px -12px oklch(0.20 0.015 260 / 0.25);
 }
 
 .dark {
   /* ========================================
-     🌙 DARK MODE - Preto puro com acentos vibrantes
+     🌙 DARK MODE - Preto Absoluto Premium
+     Inspirado em: Apple, Figma, GitHub Dark
      ======================================== */
   
-  /* Base Surface Colors - Preto puro OLED-friendly */
-  --background: oklch(0.08 0.008 270);         /* Preto profundo azulado */
-  --foreground: oklch(0.98 0.003 270);         /* Branco quente */
+  /* 🎨 Base Surface - Preto profundo OLED */
+  --background: oklch(0.10 0.010 260);         /* Preto azulado profundo */
+  --foreground: oklch(0.96 0.004 260);         /* Branco suave */
   
-  /* Card & Elevated Surfaces */
-  --card: oklch(0.13 0.012 270);               /* Card elevado escuro */
-  --card-foreground: oklch(0.98 0.003 270);
-  --popover: oklch(0.11 0.010 270);
-  --popover-foreground: oklch(0.98 0.003 270);
+  /* 📄 Cards & Elevated Surfaces */
+  --card: oklch(0.15 0.014 260);               /* Card ligeiramente elevado */
+  --card-foreground: oklch(0.96 0.004 260);
+  --popover: oklch(0.13 0.012 260);
+  --popover-foreground: oklch(0.96 0.004 260);
   
-  /* 🟠 PRIMARY - Orange luminoso no dark */
-  --primary: oklch(0.72 0.20 35);              /* Orange brilhante */
-  --primary-foreground: oklch(0.08 0.008 35);  /* Texto escuro */
-  --primary-hover: oklch(0.77 0.21 35);        /* Orange mais claro no hover */
-  --primary-active: oklch(0.82 0.22 35);       /* Orange luminoso */
+  /* 🔵 PRIMARY - Azul luminoso mas elegante */
+  --primary: oklch(0.65 0.16 250);             /* Azul brilhante equilibrado */
+  --primary-foreground: oklch(0.10 0.010 250); /* Texto escuro */
+  --primary-hover: oklch(0.70 0.17 250);       /* Azul mais claro */
+  --primary-active: oklch(0.75 0.18 250);      /* Azul vibrante */
   
-  /* Secondary - Cinza escuro moderno */
-  --secondary: oklch(0.20 0.015 270);          /* Cinza médio escuro */
-  --secondary-foreground: oklch(0.98 0.003 270);
-  --secondary-hover: oklch(0.25 0.018 270);
+  /* 🌫️ Secondary - Cinza escuro sofisticado */
+  --secondary: oklch(0.22 0.016 260);          /* Cinza médio */
+  --secondary-foreground: oklch(0.96 0.004 260);
+  --secondary-hover: oklch(0.27 0.018 260);
+  --secondary-active: oklch(0.32 0.020 260);
   
-  /* Muted - Backgrounds sutis escuros */
-  --muted: oklch(0.18 0.013 270);              /* Cinza escuro sutil */
-  --muted-foreground: oklch(0.65 0.012 270);   /* Texto secundário claro */
+  /* 🌾 Muted - Tons escuros equilibrados */
+  --muted: oklch(0.20 0.014 260);              /* Cinza escuro sutil */
+  --muted-foreground: oklch(0.65 0.010 260);   /* Texto secundário legível */
   
-  /* Accent - Azul luminoso */
-  --accent: oklch(0.25 0.020 240);             /* Azul escuro sutil */
-  --accent-foreground: oklch(0.98 0.003 240);
+  /* 💎 Accent - Verde esmeralda suave */
+  --accent: oklch(0.26 0.025 170);             /* Verde escuro sutil */
+  --accent-foreground: oklch(0.96 0.004 170);
   
-  /* 🔴 ERROR/DESTRUCTIVE - Vermelho luminoso */
-  --destructive: oklch(0.68 0.23 25);          /* Vermelho brilhante */
-  --destructive-foreground: oklch(0.98 0.003 25);
-  --error: oklch(0.68 0.23 25);
-  --error-foreground: oklch(0.98 0.003 25);
-  --error-bg: oklch(0.18 0.045 25);            /* Vermelho escuro */
-  --error-border: oklch(0.35 0.12 25);         /* Vermelho médio */
+  /* 🔴 ERROR/DESTRUCTIVE - Vermelho suave no dark */
+  --destructive: oklch(0.65 0.21 25);          /* Vermelho balanceado */
+  --destructive-foreground: oklch(0.96 0.004 25);
+  --error: oklch(0.65 0.21 25);
+  --error-foreground: oklch(0.96 0.004 25);
+  --error-bg: oklch(0.20 0.042 25);            /* Fundo vermelho escuro */
+  --error-border: oklch(0.38 0.11 25);
   
   /* 🟡 WARNING - Âmbar luminoso */
-  --warning: oklch(0.78 0.16 60);              /* Âmbar brilhante */
-  --warning-foreground: oklch(0.10 0.010 60);
-  --warning-bg: oklch(0.18 0.040 60);          /* Âmbar escuro */
-  --warning-border: oklch(0.38 0.10 60);       /* Âmbar médio */
+  --warning: oklch(0.75 0.14 65);              /* Âmbar brilhante */
+  --warning-foreground: oklch(0.12 0.010 65);
+  --warning-bg: oklch(0.20 0.038 65);
+  --warning-border: oklch(0.40 0.09 65);
   
-  /* 🟢 SUCCESS - Verde esmeralda luminoso */
-  --success: oklch(0.68 0.16 155);             /* Verde brilhante */
-  --success-foreground: oklch(0.98 0.003 155);
-  --success-bg: oklch(0.16 0.040 155);         /* Verde escuro */
-  --success-border: oklch(0.35 0.11 155);      /* Verde médio */
+  /* 🟢 SUCCESS - Verde menta luminoso */
+  --success: oklch(0.65 0.13 160);             /* Verde equilibrado */
+  --success-foreground: oklch(0.96 0.004 160);
+  --success-bg: oklch(0.18 0.038 160);
+  --success-border: oklch(0.38 0.10 160);
   
-  /* 🔵 INFO - Azul céu luminoso */
-  --info: oklch(0.68 0.16 230);                /* Azul brilhante */
-  --info-foreground: oklch(0.98 0.003 230);
-  --info-bg: oklch(0.16 0.040 230);            /* Azul escuro */
-  --info-border: oklch(0.35 0.11 230);         /* Azul médio */
+  /* 🔵 INFO - Azul confiável */
+  --info: oklch(0.65 0.13 235);                /* Azul informativo */
+  --info-foreground: oklch(0.96 0.004 235);
+  --info-bg: oklch(0.18 0.038 235);
+  --info-border: oklch(0.38 0.10 235);
   
-  /* Borders & Inputs */
-  --border: oklch(0.22 0.015 270);             /* Borda sutil escura */
-  --border-hover: oklch(0.32 0.020 270);       /* Borda clara no hover */
-  --input: oklch(0.14 0.012 270);              /* Input escuro */
-  --input-border: oklch(0.26 0.018 270);       /* Borda de input */
+  /* 📐 Borders & Inputs - Discretos mas visíveis */
+  --border: oklch(0.25 0.016 260);             /* Borda sutil */
+  --border-hover: oklch(0.35 0.020 260);       /* Borda visível */
+  --input: oklch(0.16 0.014 260);              /* Input escuro */
+  --input-border: oklch(0.28 0.018 260);       /* Borda de input */
+  --input-focus: oklch(0.65 0.16 250);         /* Azul no foco */
   
-  /* Focus Ring */
-  --ring: oklch(0.72 0.20 35);                 /* Orange brilhante */
-  --ring-offset: oklch(0.08 0.008 270);        /* Offset preto */
+  /* 💍 Focus Ring - Azul vibrante */
+  --ring: oklch(0.65 0.16 250);
+  --ring-offset: oklch(0.10 0.010 260);
   
-  /* Chart Colors - Paleta vibrante para dark */
-  --chart-1: oklch(0.72 0.20 35);              /* Orange luminoso */
-  --chart-2: oklch(0.68 0.16 230);             /* Azul luminoso */
-  --chart-3: oklch(0.68 0.16 155);             /* Verde luminoso */
-  --chart-4: oklch(0.78 0.16 60);              /* Âmbar luminoso */
-  --chart-5: oklch(0.70 0.19 320);             /* Rosa luminoso */
+  /* 📊 Chart Colors - Luminosos mas elegantes */
+  --chart-1: oklch(0.65 0.16 250);             /* Azul */
+  --chart-2: oklch(0.65 0.13 160);             /* Verde */
+  --chart-3: oklch(0.75 0.14 65);              /* Âmbar */
+  --chart-4: oklch(0.68 0.17 310);             /* Magenta */
+  --chart-5: oklch(0.68 0.16 30);              /* Coral */
   
-  /* Sidebar */
-  --sidebar: oklch(0.10 0.010 270);
-  --sidebar-foreground: oklch(0.98 0.003 270);
-  --sidebar-primary: oklch(0.72 0.20 35);
-  --sidebar-primary-foreground: oklch(0.98 0.003 35);
-  --sidebar-accent: oklch(0.20 0.015 270);
-  --sidebar-accent-foreground: oklch(0.98 0.003 270);
-  --sidebar-border: oklch(0.22 0.015 270);
-  --sidebar-ring: oklch(0.72 0.20 35);
+  /* 📱 Sidebar */
+  --sidebar: oklch(0.12 0.012 260);
+  --sidebar-foreground: oklch(0.96 0.004 260);
+  --sidebar-primary: oklch(0.65 0.16 250);
+  --sidebar-primary-foreground: oklch(0.96 0.004 250);
+  --sidebar-accent: oklch(0.22 0.016 260);
+  --sidebar-accent-foreground: oklch(0.96 0.004 260);
+  --sidebar-border: oklch(0.25 0.016 260);
+  --sidebar-ring: oklch(0.65 0.16 250);
   
-  /* Surface Elevation - Sombras para dark mode */
-  --shadow-xs: 0 1px 2px 0 oklch(0 0 0 / 0.4);
-  --shadow-sm: 0 1px 3px 0 oklch(0 0 0 / 0.5), 0 1px 2px -1px oklch(0 0 0 / 0.5);
-  --shadow-md: 0 4px 6px -1px oklch(0 0 0 / 0.5), 0 2px 4px -2px oklch(0 0 0 / 0.5);
-  --shadow-lg: 0 10px 15px -3px oklch(0 0 0 / 0.6), 0 4px 6px -4px oklch(0 0 0 / 0.6);
-  --shadow-xl: 0 20px 25px -5px oklch(0 0 0 / 0.7), 0 8px 10px -6px oklch(0 0 0 / 0.7);
-
-  /* Toast Colors Dark */
-    --success: 142 71% 45%;
-    --warning: 38 92% 50%;
-    --error: 0 84% 60%;
-    --info: 199 89% 48%;
+  /* 🌙 Surface Elevation - Sombras profundas */
+  --shadow-xs: 0 1px 2px 0 oklch(0 0 0 / 0.3);
+  --shadow-sm: 0 1px 3px 0 oklch(0 0 0 / 0.4), 0 1px 2px -1px oklch(0 0 0 / 0.4);
+  --shadow-md: 0 4px 6px -1px oklch(0 0 0 / 0.4), 0 2px 4px -2px oklch(0 0 0 / 0.4);
+  --shadow-lg: 0 10px 15px -3px oklch(0 0 0 / 0.5), 0 4px 6px -4px oklch(0 0 0 / 0.5);
+  --shadow-xl: 0 20px 25px -5px oklch(0 0 0 / 0.6), 0 8px 10px -6px oklch(0 0 0 / 0.6);
+  --shadow-2xl: 0 25px 50px -12px oklch(0 0 0 / 0.7);
 }
 
 /* ========================================
-   🎨 BASE LAYER - Estilos Globais
+   🎨 BASE LAYER - Estilos Globais Premium
    ======================================== */
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
+    outline-color: var(--ring);
+    outline-offset: 2px;
   }
   
   body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1, "cv05" 1;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
   }
   
   /* ========================================
-     🖱️ CURSOR SYSTEM
+     🖱️ CURSOR SYSTEM - Intuitivo
      ======================================== */
   
   button,
@@ -293,11 +292,13 @@
   [role="button"],
   label[for],
   select,
+  summary,
   input[type="button"],
   input[type="submit"],
   input[type="reset"],
   input[type="checkbox"],
-  input[type="radio"] {
+  input[type="radio"],
+  input[type="file"] {
     cursor: pointer;
   }
   
@@ -307,7 +308,7 @@
   [aria-disabled="true"],
   [disabled] {
     cursor: not-allowed;
-    opacity: 0.5;
+    opacity: 0.6;
   }
   
   input[type="text"],
@@ -317,79 +318,90 @@
   input[type="tel"],
   input[type="url"],
   input[type="number"],
+  input[type="date"],
   textarea {
     cursor: text;
   }
   
+  [draggable="true"] {
+    cursor: move;
+  }
+  
   /* ========================================
-     📏 SCROLLBAR STYLING - Moderno e sutil
+     📏 SCROLLBAR - Premium e Minimalista
      ======================================== */
   
   * {
     scrollbar-width: thin;
-    scrollbar-color: oklch(0.62 0.21 35 / 0.4) oklch(0.97 0.003 270);
+    scrollbar-color: oklch(0.50 0.14 250 / 0.3) transparent;
   }
   
   .dark * {
-    scrollbar-color: oklch(0.72 0.20 35 / 0.6) oklch(0.18 0.013 270);
+    scrollbar-color: oklch(0.65 0.16 250 / 0.5) transparent;
   }
   
   *::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
   }
   
   *::-webkit-scrollbar-track {
-    background: oklch(0.97 0.003 270);
-    border-radius: 5px;
-  }
-  
-  .dark *::-webkit-scrollbar-track {
-    background: oklch(0.18 0.013 270);
+    background: transparent;
   }
   
   *::-webkit-scrollbar-thumb {
-    background: oklch(0.62 0.21 35 / 0.4);
-    border-radius: 5px;
-    border: 2px solid oklch(0.97 0.003 270);
-    transition: all 0.2s ease;
+    background: oklch(0.50 0.14 250 / 0.3);
+    border-radius: 999px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   *::-webkit-scrollbar-thumb:hover {
-    background: oklch(0.62 0.21 35 / 0.7);
+    background: oklch(0.50 0.14 250 / 0.5);
   }
   
   .dark *::-webkit-scrollbar-thumb {
-    background: oklch(0.72 0.20 35 / 0.6);
-    border-color: oklch(0.18 0.013 270);
+    background: oklch(0.65 0.16 250 / 0.5);
   }
   
   .dark *::-webkit-scrollbar-thumb:hover {
-    background: oklch(0.72 0.20 35 / 0.9);
+    background: oklch(0.65 0.16 250 / 0.7);
   }
   
   /* ========================================
-     🎯 SELECTION STYLING - Vibrante
+     🎯 SELECTION - Elegante
      ======================================== */
   
   ::selection {
-    background-color: oklch(0.62 0.21 35 / 0.25);
-    color: oklch(0.15 0.02 270);
+    background-color: oklch(0.50 0.14 250 / 0.20);
+    color: oklch(0.20 0.015 260);
   }
   
   .dark ::selection {
-    background-color: oklch(0.72 0.20 35 / 0.35);
-    color: oklch(0.98 0.003 270);
+    background-color: oklch(0.65 0.16 250 / 0.30);
+    color: oklch(0.96 0.004 260);
   }
   
   /* ========================================
-     🔤 TYPOGRAPHY REFINEMENTS
+     🔤 TYPOGRAPHY - Refinada
      ======================================== */
   
   h1, h2, h3, h4, h5, h6 {
-    font-feature-settings: "ss01" 1, "cv01" 1;
-    letter-spacing: -0.025em;
-    line-height: 1.2;
+    font-feature-settings: "ss01" 1, "cv01" 1, "cv05" 1;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    font-weight: 600;
+  }
+  
+  h1 { @apply text-4xl md:text-5xl lg:text-6xl; }
+  h2 { @apply text-3xl md:text-4xl lg:text-5xl; }
+  h3 { @apply text-2xl md:text-3xl lg:text-4xl; }
+  h4 { @apply text-xl md:text-2xl lg:text-3xl; }
+  h5 { @apply text-lg md:text-xl lg:text-2xl; }
+  h6 { @apply text-base md:text-lg lg:text-xl; }
+  
+  p {
+    line-height: 1.6;
+    letter-spacing: -0.01em;
   }
   
   code, pre {
@@ -398,75 +410,46 @@
   }
   
   /* ========================================
-     ✨ UTILITY CLASSES - Semantic Colors
+     ✨ SEMANTIC COLOR UTILITIES
      ======================================== */
   
-  .bg-success {
-    background-color: var(--success-bg);
-  }
+  .bg-success { background-color: var(--success-bg); }
+  .text-success { color: var(--success); }
+  .border-success { border-color: var(--success-border); }
   
-  .text-success {
-    color: var(--success);
-  }
+  .bg-warning { background-color: var(--warning-bg); }
+  .text-warning { color: var(--warning); }
+  .border-warning { border-color: var(--warning-border); }
   
-  .border-success {
-    border-color: var(--success-border);
-  }
+  .bg-error { background-color: var(--error-bg); }
+  .text-error { color: var(--error); }
+  .border-error { border-color: var(--error-border); }
   
-  .bg-warning {
-    background-color: var(--warning-bg);
-  }
-  
-  .text-warning {
-    color: var(--warning);
-  }
-  
-  .border-warning {
-    border-color: var(--warning-border);
-  }
-  
-  .bg-error {
-    background-color: var(--error-bg);
-  }
-  
-  .text-error {
-    color: var(--error);
-  }
-  
-  .border-error {
-    border-color: var(--error-border);
-  }
-  
-  .bg-info {
-    background-color: var(--info-bg);
-  }
-  
-  .text-info {
-    color: var(--info);
-  }
-  
-  .border-info {
-    border-color: var(--info-border);
-  }
+  .bg-info { background-color: var(--info-bg); }
+  .text-info { color: var(--info); }
+  .border-info { border-color: var(--info-border); }
   
   /* ========================================
-     🎭 FOCUS VISIBLE - Acessibilidade moderna
+     🎭 FOCUS - Acessível e Bonito
      ======================================== */
   
   *:focus-visible {
     outline: 2px solid var(--ring);
     outline-offset: 2px;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
   }
   
   button:focus-visible,
-  a:focus-visible {
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
     outline: 2px solid var(--ring);
     outline-offset: 2px;
   }
   
   /* ========================================
-     🌊 SMOOTH TRANSITIONS - Fluidas
+     🌊 TRANSITIONS - Ultra Suaves
      ======================================== */
   
   * {
@@ -477,80 +460,164 @@
   a,
   input,
   select,
-  textarea {
+  textarea,
+  [role="button"] {
     transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   /* ========================================
-     💫 GLASS MORPHISM - Efeito moderno
+     💎 GLASS MORPHISM - Premium
      ======================================== */
   
   .glass {
-    background: oklch(1 0 0 / 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: oklch(1 0 0 / 0.7);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid oklch(0.90 0.006 260 / 0.5);
   }
   
   .dark .glass {
-    background: oklch(0.13 0.012 270 / 0.8);
+    background: oklch(0.15 0.014 260 / 0.7);
+    border-color: oklch(0.25 0.016 260 / 0.5);
   }
   
   /* ========================================
-     🎨 GRADIENT BACKGROUNDS - Suaves
+     🎨 GRADIENT BACKGROUNDS - Sofisticados
      ======================================== */
   
-  .gradient-orange {
+  .gradient-primary {
     background: linear-gradient(135deg, 
-      oklch(0.62 0.21 35) 0%, 
-      oklch(0.70 0.17 60) 100%
+      oklch(0.50 0.14 250) 0%, 
+      oklch(0.56 0.14 235) 100%
     );
   }
   
-  .gradient-purple {
+  .gradient-success {
     background: linear-gradient(135deg, 
-      oklch(0.60 0.20 320) 0%, 
-      oklch(0.56 0.17 230) 100%
+      oklch(0.54 0.14 160) 0%, 
+      oklch(0.54 0.14 170) 100%
     );
   }
   
-  .gradient-emerald {
+  .gradient-warning {
     background: linear-gradient(135deg, 
-      oklch(0.56 0.17 155) 0%, 
-      oklch(0.68 0.16 155) 100%
+      oklch(0.68 0.15 65) 0%, 
+      oklch(0.72 0.16 55) 100%
+    );
+  }
+  
+  .gradient-dark {
+    background: linear-gradient(135deg, 
+      oklch(0.15 0.014 260) 0%, 
+      oklch(0.20 0.014 260) 100%
     );
   }
   
   /* ========================================
-     🌟 SHIMMER EFFECT - Loading elegante
+     🌟 SHIMMER - Loading Premium
      ======================================== */
   
   @keyframes shimmer {
-    0% {
-      background-position: -200% 0;
-    }
-    100% {
-      background-position: 200% 0;
-    }
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
   }
   
   .shimmer {
     background: linear-gradient(
       90deg,
-      oklch(0.97 0.003 270) 25%,
-      oklch(0.99 0.002 270) 50%,
-      oklch(0.97 0.003 270) 75%
+      oklch(0.96 0.006 90) 0%,
+      oklch(0.99 0.002 90) 50%,
+      oklch(0.96 0.006 90) 100%
     );
     background-size: 200% 100%;
-    animation: shimmer 2s infinite;
+    animation: shimmer 2s ease-in-out infinite;
   }
   
   .dark .shimmer {
     background: linear-gradient(
       90deg,
-      oklch(0.18 0.013 270) 25%,
-      oklch(0.22 0.015 270) 50%,
-      oklch(0.18 0.013 270) 75%
+      oklch(0.20 0.014 260) 0%,
+      oklch(0.25 0.016 260) 50%,
+      oklch(0.20 0.014 260) 100%
     );
-    background-size: 200% 100%;
+  }
+  
+  /* ========================================
+     ✨ HOVER EFFECTS - Interativos
+     ======================================== */
+  
+  .hover-lift {
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+  
+  .hover-scale {
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.02);
+  }
+  
+  /* ========================================
+     🎯 SHADOW UTILITIES - Profundidade
+     ======================================== */
+  
+  .shadow-soft { box-shadow: var(--shadow-sm); }
+  .shadow-medium { box-shadow: var(--shadow-md); }
+  .shadow-strong { box-shadow: var(--shadow-lg); }
+  .shadow-intense { box-shadow: var(--shadow-xl); }
+  
+  /* ========================================
+     🧩 CARD VARIANTS - Versatilidade
+     ======================================== */
+  
+  .card-elevated {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .card-flat {
+    background: var(--muted);
+    border-radius: var(--radius-lg);
+  }
+  
+  .card-outlined {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+  }
+  
+  /* ========================================
+     🎨 BADGE VARIANTS - Estados visuais
+     ======================================== */
+  
+  .badge-success {
+    background: var(--success-bg);
+    color: var(--success);
+    border: 1px solid var(--success-border);
+  }
+  
+  .badge-warning {
+    background: var(--warning-bg);
+    color: var(--warning);
+    border: 1px solid var(--warning-border);
+  }
+  
+  .badge-error {
+    background: var(--error-bg);
+    color: var(--error);
+    border: 1px solid var(--error-border);
+  }
+  
+  .badge-info {
+    background: var(--info-bg);
+    color: var(--info);
+    border: 1px solid var(--info-border);
   }
 }

@@ -7,14 +7,16 @@ import { LogService } from '@/services/log.service';
 import { formatRelativeDate } from '@/lib/log-utils';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { useToast } from '@/hooks/useToast';
-import { 
-  AlertCircle, 
-  AlertTriangle, 
-  Info, 
+import {
+  AlertCircle,
+  AlertTriangle,
+  Info,
   Layers,
   CheckCircle,
-  XCircle 
+  Filter,
+  Sparkles
 } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 // Componentes
 import { LogsFilters } from '@/components/logs/list/LogsFilters';
@@ -24,24 +26,23 @@ import { LogCard } from '@/components/logs/list/LogCard';
 import { LogsLoading } from '@/components/logs/list/LogsLoading';
 import { LogsEmpty } from '@/components/logs/list/LogsEmpty';
 import { LogsPagination } from '@/components/logs/list/LogsPagination';
-import { Card, CardContent } from '@/components/ui/card';
 
 export default function LogsPage() {
   const router = useRouter();
   const { success, error: showError } = useToast();
-  
+
   // Estados principais
   const [logs, setLogs] = useState<Log[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [projects, setProjects] = useState<string[]>([]);
-  
+
   // Filtros
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedProject, setSelectedProject] = useState<string>('all');
   const [selectedLevel, setSelectedLevel] = useState<string>('all');
   const [selectedResolved, setSelectedResolved] = useState<string>('all');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
-  
+
   // Paginação
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
@@ -66,7 +67,6 @@ export default function LogsPage() {
   const loadLogs = async () => {
     setIsLoading(true);
     try {
-      // Montar filtros
       const filters: any = {
         page: currentPage,
         pageSize: itemsPerPage,
@@ -81,20 +81,17 @@ export default function LogsPage() {
       if (selectedResolved === 'resolved') filters.isResolved = true;
       if (selectedResolved === 'unresolved') filters.isResolved = false;
 
-      // Buscar logs
       const response = await LogService.getAll(filters);
-      
+
       setLogs(response.items);
       setTotalPages(response.totalPages);
       setTotalItems(response.totalItems);
 
-      // Extrair projetos únicos
       const uniqueProjects = Array.from(
         new Set(response.items.map((log) => log.projectName))
       );
       setProjects(uniqueProjects);
 
-      // Calcular stats
       calculateStats(response.items);
     } catch (err) {
       const apiError = err as Error;
@@ -117,15 +114,14 @@ export default function LogsPage() {
     });
   };
 
-  // Reset página ao filtrar
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, selectedProject, selectedLevel, selectedResolved]);
 
   const hasActiveFilters =
-    selectedProject !== 'all' || 
-    selectedLevel !== 'all' || 
-    selectedResolved !== 'all' || 
+    selectedProject !== 'all' ||
+    selectedLevel !== 'all' ||
+    selectedResolved !== 'all' ||
     searchTerm !== '';
 
   const clearAllFilters = () => {
@@ -136,40 +132,49 @@ export default function LogsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50/50 via-white to-slate-50/50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
       <div className="p-4 sm:p-6 lg:p-8">
         <div className="max-w-7xl mx-auto space-y-6">
-          {/* Page Header */}
-          <PageHeader
-            title="Logs do Sistema"
-            description="Visualize e gerencie todos os logs dos seus projetos"
-            badges={[
-              { 
-                label: `${stats.total} logs`, 
-                variant: 'secondary', 
-                icon: Layers 
-              },
-              { 
-                label: `${stats.errors} erros`, 
-                variant: 'destructive', 
-                icon: AlertCircle 
-              },
-              { 
-                label: `${stats.warnings} avisos`, 
-                variant: 'outline', 
-                icon: AlertTriangle 
-              },
-              {
-                label: `${stats.resolved} resolvidos`,
-                variant: 'default',
-                icon: CheckCircle
-              },
-            ]}
-          />
 
-          {/* Filtros */}
-          <Card>
-            <CardContent className="p-4">
+          {/* Page Header com animação */}
+          <div className="animate-in fade-in slide-in-from-top-4 duration-700">
+            <PageHeader
+              title="Logs do Sistema"
+              description="Visualize e gerencie todos os logs dos seus projetos em tempo real"
+              badges={[
+                {
+                  label: `${stats.total} logs`,
+                  variant: 'secondary',
+                  icon: Layers
+                },
+                {
+                  label: `${stats.errors} erros`,
+                  variant: 'destructive',
+                  icon: AlertCircle
+                },
+                {
+                  label: `${stats.warnings} avisos`,
+                  variant: 'outline',
+                  icon: AlertTriangle
+                },
+                {
+                  label: `${stats.resolved} resolvidos`,
+                  variant: 'default',
+                  icon: CheckCircle
+                },
+              ]}
+            />
+          </div>
+
+          {/* Card de Filtros - Premium */}
+          {/* Card de Filtros - Ultra Clean */}
+          <div className="animate-in fade-in slide-in-from-top-4 duration-700 delay-100">
+            <div className={cn(
+              'bg-white dark:bg-slate-900',
+              'rounded-lg border border-slate-200 dark:border-slate-800',
+              'p-4 space-y-4'
+            )}>
+
               <LogsFilters
                 searchTerm={searchTerm}
                 setSearchTerm={setSearchTerm}
@@ -195,44 +200,62 @@ export default function LogsPage() {
                 onClearResolved={() => setSelectedResolved('all')}
                 onClearAll={clearAllFilters}
               />
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
-          {/* Results Counter */}
-          <ResultsCounter
-            filteredCount={totalItems}
-            totalCount={totalItems}
-            currentPage={currentPage}
-            totalPages={totalPages}
-          />
+          {/* Results Counter com animação */}
+          <div className="animate-in fade-in slide-in-from-bottom-2 duration-700 delay-200">
+            <ResultsCounter
+              filteredCount={totalItems}
+              totalCount={totalItems}
+              currentPage={currentPage}
+              totalPages={totalPages}
+            />
+          </div>
 
           {/* Content */}
           {isLoading ? (
-            <LogsLoading />
+            <div className="animate-in fade-in duration-500">
+              <LogsLoading />
+            </div>
           ) : logs.length === 0 ? (
-            <LogsEmpty
-              hasActiveFilters={hasActiveFilters}
-              onClearFilters={clearAllFilters}
-            />
+            <div className="animate-in fade-in zoom-in-95 duration-500">
+              <LogsEmpty
+                hasActiveFilters={hasActiveFilters}
+                onClearFilters={clearAllFilters}
+              />
+            </div>
           ) : (
             <>
-              <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+              {/* Grid de Logs com animação escalonada */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
                 {logs.map((log, index) => (
-                  <LogCard
+                  <div
                     key={log.guid}
-                    log={log}
-                    index={index}
-                    formatDate={formatRelativeDate}
-                  />
+                    style={{
+                      animationDelay: `${index * 50}ms`,
+                      animationFillMode: 'backwards'
+                    }}
+                    className="animate-in fade-in slide-in-from-bottom-4 duration-700"
+                  >
+                    <LogCard
+                      log={log}
+                      index={index}
+                      formatDate={formatRelativeDate}
+                    />
+                  </div>
                 ))}
               </div>
 
+              {/* Paginação */}
               {totalPages > 1 && (
-                <LogsPagination
-                  currentPage={currentPage}
-                  totalPages={totalPages}
-                  onPageChange={setCurrentPage}
-                />
+                <div className="animate-in fade-in slide-in-from-bottom-2 duration-700 delay-300">
+                  <LogsPagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={setCurrentPage}
+                  />
+                </div>
               )}
             </>
           )}

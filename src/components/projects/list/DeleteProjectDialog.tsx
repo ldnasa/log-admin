@@ -35,18 +35,16 @@ export function DeleteProjectDialog({
       <AlertDialogContent>
         <AlertDialogHeader>
           <div className="flex items-center gap-3 mb-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-destructive/10">
-              <AlertTriangle className="h-5 w-5 text-destructive" />
+            <div className="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-950/30 flex items-center justify-center">
+              <AlertTriangle className="h-5 w-5 text-rose-600 dark:text-rose-400" />
             </div>
             <AlertDialogTitle className="text-lg">Excluir Projeto</AlertDialogTitle>
           </div>
-          <AlertDialogDescription className="text-base">
+          <AlertDialogDescription className="text-sm leading-relaxed">
             Tem certeza que deseja excluir o projeto{' '}
-            <span className="font-semibold text-foreground">{project.name}</span>?
-            <br />
-            <br />
-            Esta ação não pode ser desfeita. Todos os logs associados a este projeto serão
-            permanentemente removidos.
+            <span className="font-semibold text-slate-900 dark:text-white">{project.name}</span>?
+            <br /><br />
+            Esta ação não pode ser desfeita. Todos os logs associados a este projeto serão permanentemente removidos.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
@@ -54,7 +52,7 @@ export function DeleteProjectDialog({
           <AlertDialogAction
             onClick={onConfirm}
             disabled={isLoading}
-            className="bg-destructive hover:bg-destructive/90"
+            className="bg-rose-600 hover:bg-rose-700"
           >
             {isLoading ? (
               <>

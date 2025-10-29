@@ -1,11 +1,10 @@
-// types/log.types.ts
-
+// ✅ Enum alinhado com o backend C# (valores numéricos)
 export enum LogLevel {
-  DEBUG = 'Debug',
-  INFO = 'Info',
-  WARN = 'Warning',
-  ERROR = 'Error',
-  FATAL = 'Fatal',
+  DEBUG = 0,
+  INFO = 1,
+  WARN = 2,
+  ERROR = 3,
+  FATAL = 4,
 }
 
 export interface Log {
@@ -14,7 +13,7 @@ export interface Log {
   projectId: number;
   projectName: string;
   level: LogLevel;
-  levelText: string;
+  levelText?: string;
   createdAt: string;
   
   // Informações do Usuário/Origem
@@ -40,7 +39,7 @@ export interface Log {
 export interface LogFilterParams {
   page?: number;
   pageSize?: number;
-  level?: LogLevel;
+  level?: LogLevel; // ✅ Pode ser 0, 1, 2, 3, 4
   projectId?: number;
   searchText?: string;
   startDate?: string;

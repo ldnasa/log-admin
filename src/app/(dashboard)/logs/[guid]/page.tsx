@@ -31,7 +31,6 @@ export default function LogDetailPage() {
   const [loading, setLoading] = useState(true);
   const [copiedField, setCopiedField] = useState<string | null>(null);
 
-  // Carregar log da API
   useEffect(() => {
     if (guid) {
       loadLog();
@@ -48,8 +47,6 @@ export default function LogDetailPage() {
       showError('Erro ao carregar log', {
         description: apiError.message || 'Não foi possível carregar o log.',
       });
-      // Opcional: redirecionar após erro
-      // setTimeout(() => router.push('/logs'), 2000);
     } finally {
       setLoading(false);
     }
@@ -66,7 +63,6 @@ export default function LogDetailPage() {
     });
   };
 
-  // Handler: Toggle Resolution
   const handleToggleResolution = async (isResolved: boolean) => {
     if (!log) return;
 
@@ -74,20 +70,13 @@ export default function LogDetailPage() {
       let updatedLog: Log;
 
       if (isResolved) {
-        // TODO: Pegar GUID do usuário logado do contexto de autenticação
-        const userGuid = user?.guid; // Substituir pelo GUID real
-
-        updatedLog = await LogService.markAsResolved(
-          log.guid,
-          userGuid ?? '' // ou userGuid || ''
-        );
-
+        const userGuid = user?.guid;
+        updatedLog = await LogService.markAsResolved(log.guid, userGuid ?? '');
         success('Log marcado como resolvido!', {
           description: 'O status foi atualizado com sucesso.',
         });
       } else {
         updatedLog = await LogService.markAsUnresolved(log.guid);
-
         info('Log reaberto', {
           description: 'O log foi marcado como pendente novamente.',
         });
@@ -103,7 +92,6 @@ export default function LogDetailPage() {
     }
   };
 
-  // Handler: Delete Log
   const handleDelete = async () => {
     if (!log) return;
 
@@ -119,7 +107,6 @@ export default function LogDetailPage() {
     }
   };
 
-  // Handler: Export Log
   const handleExport = () => {
     if (!log) return;
 
@@ -139,7 +126,6 @@ export default function LogDetailPage() {
     });
   };
 
-  // Handler: Share Log
   const handleShare = async () => {
     if (!log) return;
 
@@ -157,7 +143,6 @@ export default function LogDetailPage() {
         // Usuário cancelou
       }
     } else {
-      // Fallback: copiar link
       copyToClipboard(url, 'Link');
     }
   };
@@ -166,16 +151,19 @@ export default function LogDetailPage() {
   if (!log) return <LogNotFound />;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50/50 via-white to-slate-50/50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-4">
+        
+        {/* Hero Section */}
         <LogHeroSection log={log} formatDateTime={formatDateTime} />
 
-        {/* Card de Resolução - Destaque no topo */}
+        {/* Resolution Card - Destaque */}
         <LogResolutionCard
           log={log}
           onToggleResolution={handleToggleResolution}
         />
 
+        {/* Quick Info */}
         <QuickInfoGrid
           userName={log.userName || 'Sistema'}
           arquivo={log.fileName || 'N/A'}
@@ -184,7 +172,8 @@ export default function LogDetailPage() {
           formatDateTime={formatDateTime}
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Two Column Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <IdentificationCard
             guid={log.guid}
             requestId={`req_${log.guid.slice(0, 8)}`}
@@ -201,6 +190,7 @@ export default function LogDetailPage() {
           />
         </div>
 
+        {/* Description - Full Width */}
         {log.description && (
           <DescriptionCard
             descricaoCompleta={log.description}
@@ -209,6 +199,7 @@ export default function LogDetailPage() {
           />
         )}
 
+        {/* Stack Trace - Full Width */}
         {log.stackTrace && (
           <StackTraceCard
             stackTrace={log.stackTrace}
@@ -217,6 +208,7 @@ export default function LogDetailPage() {
           />
         )}
 
+        {/* Actions Footer */}
         <ActionsFooter
           onDelete={handleDelete}
           onExport={handleExport}

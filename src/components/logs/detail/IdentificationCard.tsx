@@ -1,9 +1,8 @@
-// components/logs/detail/IdentificationCard.tsx
 'use client';
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { FileCode, Copy, Check } from 'lucide-react';
+import { Copy, Check, Hash } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 interface IdentificationCardProps {
   guid: string;
@@ -23,56 +22,103 @@ export function IdentificationCard({
   onCopy,
 }: IdentificationCardProps) {
   return (
-    <Card className="animate-in fade-in slide-in-from-left-4">
-      <CardHeader>
-        <CardTitle className="text-lg flex items-center gap-2">
-          <FileCode className="h-5 w-5 text-primary" />
+    <div className={cn(
+      'bg-white dark:bg-slate-900',
+      'border border-slate-200 dark:border-slate-800',
+      'rounded-lg p-4'
+    )}>
+      
+      {/* Header */}
+      <div className="flex items-center gap-2 mb-4">
+        <div className="w-7 h-7 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+          <Hash className="h-3.5 w-3.5 text-slate-600 dark:text-slate-400" />
+        </div>
+        <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
           Identificação
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-4">
+        </h3>
+      </div>
+
+      {/* Fields */}
+      <div className="space-y-3">
+        
+        {/* GUID */}
         <div>
           <div className="flex items-center justify-between mb-1">
-            <label className="text-xs text-muted-foreground font-medium">GUID</label>
+            <label className="text-xs font-medium text-slate-500 dark:text-slate-400">
+              GUID
+            </label>
             <Button
               variant="ghost"
               size="sm"
-              className="h-6"
+              className="h-5 w-5 p-0"
               onClick={() => onCopy(guid, 'guid')}
             >
               {copiedField === 'guid' ? (
-                <Check className="h-3 w-3" />
+                <Check className="h-3 w-3 text-emerald-600" />
               ) : (
                 <Copy className="h-3 w-3" />
               )}
             </Button>
           </div>
-          <code className="block text-sm bg-muted px-3 py-2 rounded font-mono">
+          <code className={cn(
+            'block text-xs',
+            'bg-slate-50 dark:bg-slate-950',
+            'px-2 py-1.5 rounded',
+            'text-slate-700 dark:text-slate-300',
+            'font-mono truncate'
+          )}>
             {guid}
           </code>
         </div>
 
+        {/* Request ID */}
         <div>
-          <label className="text-xs text-muted-foreground font-medium">
+          <label className="text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 block">
             Request ID
           </label>
-          <code className="block text-sm bg-muted px-3 py-2 rounded font-mono mt-1">
+          <code className={cn(
+            'block text-xs',
+            'bg-slate-50 dark:bg-slate-950',
+            'px-2 py-1.5 rounded',
+            'text-slate-700 dark:text-slate-300',
+            'font-mono'
+          )}>
             {requestId}
           </code>
         </div>
 
+        {/* Método */}
         <div>
-          <label className="text-xs text-muted-foreground font-medium">Método</label>
-          <p className="text-sm font-mono bg-muted px-3 py-2 rounded mt-1">
+          <label className="text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 block">
+            Método
+          </label>
+          <p className={cn(
+            'text-xs',
+            'bg-slate-50 dark:bg-slate-950',
+            'px-2 py-1.5 rounded',
+            'text-slate-700 dark:text-slate-300',
+            'font-mono'
+          )}>
             {metodo}
           </p>
         </div>
 
+        {/* Linha */}
         <div>
-          <label className="text-xs text-muted-foreground font-medium">Linha</label>
-          <p className="text-sm font-mono bg-muted px-3 py-2 rounded mt-1">{linha}</p>
+          <label className="text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 block">
+            Linha
+          </label>
+          <p className={cn(
+            'text-xs',
+            'bg-slate-50 dark:bg-slate-950',
+            'px-2 py-1.5 rounded',
+            'text-slate-700 dark:text-slate-300',
+            'font-mono'
+          )}>
+            {linha}
+          </p>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

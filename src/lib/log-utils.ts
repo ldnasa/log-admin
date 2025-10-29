@@ -194,3 +194,15 @@ export function getLogLevelColor(level: LogLevel): string {
 
   return colors[level] || 'slate';
 }
+
+export function getLevelName(level: LogLevel): string {
+  const colors: Record<LogLevel, string> = {
+    [LogLevel.DEBUG]: 'DEBUG',
+    [LogLevel.INFO]: 'INFO',
+    [LogLevel.WARN]: 'AVISO',
+    [LogLevel.ERROR]: 'ERRO',
+    [LogLevel.FATAL]: 'FATAL',
+  };
+
+  return colors[level] || 'slate';
+}
